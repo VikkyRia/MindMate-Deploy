@@ -2,46 +2,40 @@
 
 > **Live Demo:** Click here to try MindMate: https://mindmate-uild.onrender.com/
 
-🌿 MindMate: Freelancer Wellness AI
-MindMate is a premium mental wellness assistant built for the modern freelancer. Built for the #RaenestXDevCareer hackathon, it addresses the unique challenges of the "gig economy"—isolation, burnout, and inconsistent work-life balance.
+**MindMate** is a high-performance AI wellness assistant designed for the modern builder. Built for the **#RaenestXDevCareer** hackathon, it serves the entire Raenest ecosystem: Founders, Entrepreneurs, and Freelancers.
 
-🚀 The Problem
-Freelancers often lack the HR support or mental health resources found in traditional corporate roles. Managing deadlines while working in isolation can lead to high stress levels and decreased productivity.
+---
 
-✨ Features
-Empathetic AI: Powered by Groq (Llama 3.3-70B) for lightning-fast, high-context emotional support.
+## 🚀 The Vision
+Building a business is mentally taxing. Traditional wellness apps are too generic; they don't understand "runway stress," "client ghosting," or "founder isolation." MindMate acts as a strategic mental partner, helping users navigate the psychological highs and lows of the "gig economy" and startup life.
 
-Freelance-Centric Logic: Understands specific triggers like "client ghosting," "scope creep," and "payment delays."
+## ✨ Key Features
+* **Strategic AI Coaching:** Powered by **Groq (Llama 3.3-70B)**, it identifies the root cause of stress (Physical vs. Mental) using targeted follow-up logic.
+* **Premium UX:** Features a smooth **Typewriter Effect** and **Markdown Rendering** for a clean, professional chat experience.
+* **Founder-Centric Logic:** Specialized advice for managing financial unpredictability, high-pressure deadlines, and business scaling.
+* **Secure by Design:** Uses environment variables (`.env`) to ensure API security, following industry best practices.
 
-Actionable Tips: Provides immediate wellness exercises (box breathing, desk stretches, time-blocking) instead of just generic advice.
+## 🛠️ Tech Stack
+* **Frontend:** HTML5, CSS3, JavaScript (Vanilla), [Marked.js](https://marked.js.org/) for formatting.
+* **Backend:** Node.js, Express.
+* **AI Engine:** Groq Cloud SDK (Llama 3.3-70b-versatile).
+* **Environment:** Dotenv for secure API management.
 
-Dark-Mode UI: Designed with a soothing aesthetic to reduce eye strain during late-night coding or designing sessions.
-
-🛠️ Tech Stack
-Frontend: HTML5, CSS3, JavaScript (Vanilla)
-
-Backend: Node.js, Express
-
-AI Engine: Groq SDK (Llama 3.3-70b-versatile)
-
-Environment: Dotenv for secure API management
-
-📦 Installation & Setup
-Clone the repository:
-
-Bash
-git clone https://github.com/VikkyRia/MindMate-Deploy.git
-Install dependencies:
-
-Bash
-npm install
-Create a .env file in the root directory and add your key:
+## 📦 Getting Started
+1. **Clone & Install:**
+   ```bash
+   git clone [https://github.com/VikkyRia/MindMate-Deploy.git](https://github.com/VikkyRia/MindMate-Deploy.git)
+   npm install
+Configure Environment:
+Create a .env file in the root and add:
 
 Plaintext
-OPENAI_API_KEY=your_groq_api_key_here
-Start the server:
+OPENAI_API_KEY=your_groq_api_key
+Launch:
 
 Bash
 npm start
-🛡️ Security
-This project follows industry best practices by using .gitignore to ensure sensitive API keys are never exposed in the version control history.
+🛡️ Security & Scalability
+This project was built with a "Logic-First" approach. By separating the system prompt logic from the frontend and securing the API keys server-side, MindMate is ready to scale from a hackathon prototype to a full SaaS integration.
+
+Updated for the Raenest X DevCareer Hackathon 2026

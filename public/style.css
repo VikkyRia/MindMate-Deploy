@@ -138,3 +138,38 @@ button:active {
   background: #e2e8f0;
   border-radius: 10px;
 }
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Ensure lists and bold text look good inside chat bubbles */
+.bot-msg strong {
+  color: #fff; /* Or your preferred highlight color */
+  font-weight: 700;
+}
+
+.bot-msg ul, .bot-msg ol {
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+/* Ensure bold text stands out and is visible */
+.bot-msg strong, .bot-msg b {
+  color: #2c3e50; /* A dark, readable color */
+  font-weight: 800;
+  display: inline-block;
+  padding: 0 2px;
+}
+
+/* If your bot bubbles are dark, use a bright highlight color instead */
+/*
+.bot-msg strong {
+  color: #ffcc00; 
+}
+*/
