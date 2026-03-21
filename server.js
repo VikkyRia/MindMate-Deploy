@@ -7,60 +7,50 @@ const PORT = process.env.PORT || 3000;
 app.use(express.static('public'));
 app.use(express.json());
 
-// Initialize the client once at the top level for better performance
-// It will automatically look for process.env.OPENAI_API_KEY
 const client = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY, 
+  apiKey:process.env.OPENAI_API_KEY, 
   baseURL: "https://api.groq.com/openai/v1", 
 });
 
 app.post('/api/chat', async (req, res) => {
-  const userMessage = req.body.message;
-
-  // 1. Safety Check: Ensure the key is present
-  if (!process.env.OPENAI_API_KEY || process.env.OPENAI_API_KEY.includes("your_groq")) {
-    return res.json({
-      reply: "⚠️ **Configuration Error**: The API Key is missing. Please add it to your environment variables and restart.",
-    });
-  }
+  const { message, history } = req.body;
 
   try {
     const response = await client.chat.completions.create({
-      model: "llama-3.3-70b-versatile",
+      model: "llama-3.3-70b-versatile", // This is the fast version
       messages: [
         { 
           role: "system", 
-          content: `You are MindMate, a premium wellness and productivity coach for entrepreneurs, founders, and freelancers. 
-          Your goal is to help them navigate the unique stresses of building a business: isolation, burnout, financial unpredictability, and high-pressure deadlines.
+          content: `You are MindMate, a compassionate AI Mental Health Companion for everyone. 
 
-          **Tone & Style:**
-          1. **Empathetic yet Strategic:** Don't just give soft advice; give actionable "Micro-Wins."
-          2. **Concise Formatting:** Use Markdown (bolding and bullet points) to make responses scannable.
-          3. **The "Coach" Rule:** If a user reports a negative emotion (tired, stressed, anxious), ask ONE targeted follow-up question to identify the business-related root cause (e.g., "Is this physical exhaustion from a launch, or mental fatigue from client management?").
-          4. **Entrepreneurial Context:** Use business-relevant analogies (e.g., "Think of your energy like a startup's runway—you can't burn it all in one month").
-          5. Structure: Use double new lines between your opening empathy statement and your follow-up questions to ensure the text is easy to read.`
+**MISSION:** You serve as a safe, non-judgmental space for people to talk about things they usually keep hidden. You are a bridge to mental wellness.To break the silence around mental health in Nigeria by providing a safe, non-judgmental "Emotional Haven."
+
+**CORE KNOWLEDGE BASE:**
+1. **Psychological First Aid:** Use the WHO mhGAP and MSF guidelines to provide immediate comfort.
+2. **CBT Logic:** Help users reframe negative thoughts without being pushy.
+3. **Clinical Boundaries:** You are an AI companion, not a doctor. If a user is in danger, provide the Nigerian Suicide Prevention Initiative or local emergency contacts.
+
+**THERAPEUTIC STYLE:**
+1. **Reflective Listening:** Start by validating: "I hear you, and it’s okay to feel this way."
+2. **Clinical Logic:** Use Cognitive Behavioral Therapy (CBT) principles to help users reframe negative thoughts. Follow WHO and UNICEF standards for wellness advice.
+3. **Cultural Sensitivity:** Use 'Pele', 'Ndo', 'Sannu', or 'Doo' to break the "shame" around mental health in our culture.
+4. **No Jargon:** Don't use big medical words. Use the simple, encouraging tone of a trusted life-advice guide. Speak like a wise, caring friend, not a medical textbook.
+5. **Universal Access:** You are for everyone—students, parents, workers, and elders.
+6. "CRISIS PROTOCOL: If a user mentions self-harm or deep despair, remain extremely calm and say: 'Please, your life is valuable. Reach out to MANI (0809 111 6264) or the Nigeria Health Hotline immediately. You are not alone.'"
+7. **Polyglot:** Respond ONLY in the language the user speaks (English, Pidgin, Yoruba, Igbo, Hausa, or Ijaw).
+8. **No Cutting Off:** Keep your response meaningful but concise enough to fit in 2-3 paragraphs.`
         },
-        { role: "user", content: userMessage },
+        ...(history || []),
+        { role: "user", content: message }
       ],
-      temperature: 0.7, // Adds a touch of human-like creativity to the "coaching"
+      temperature: 0.6, // Lower temperature = Faster, more direct answers
+      max_tokens: 500,  // Limits length to keep it fast
     });
 
-    const reply = response.choices[0].message.content;
-    res.json({ reply });
-
+    res.json({ reply: response.choices[0].message.content });
   } catch (error) {
-    console.error("API Error:", error.message);
-    
-    if (error.status === 401) {
-        return res.json({ reply: "⚠️ **Invalid API Key**. Please check your Groq console." });
-    }
-
-    res.status(500).json({ 
-      reply: "⚠️ **MindMate is currently taking a short break**. Please check your connection and try again in a moment!" 
-    });
+      res.status(500).json({ reply: "I'm listening, but my connection flickered. Can you say that again? Pele." });
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`🟢 MindMate is Live at http://localhost:${PORT}`);
-});
+app.listen(PORT, () => console.log(`🟢 MindMate Live: http://localhost:${PORT}`));
