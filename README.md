@@ -3,9 +3,14 @@
 **MindMate** is a culturally-intelligent AI Mental Health Companion designed to break the silence around mental wellness in Nigeria. Built for the **Raenest X DevCareer Hackathon**, it provides a judgment-free, anonymous environment where anyone can speak freely about their heart and mind.
 
 ---
+## 🔗 Quick Links
+* **Live Demo:** [Deploy Link - Click Here](https://mindmate-uild.onrender.com/) *(Optimized for 24/7 availability)*
+* **Video Demo:** [Watch the Demo on X](https://x.com/victoriaalayemi/status/2035750482803655145?s=20)
+
+---
 
 ## 🌟 The Mission
-In a society where mental health is often stigmatized or overlooked, many suffer in silence. **MindMate** bridges this gap by offering immediate, reliable, and empathetic support. It is a *"Compassionate Companion for Every Journey"*—from the student facing exams to the professional managing a high-stress career.
+In a society where mental health is often stigmatized or overlooked, many suffer in silence. **MindMate** bridges this gap by offering immediate, reliable, and empathetic support. It is a *"Compassionate Companion for Every Journey"*- from the student facing exams to the professional managing a high-stress career.
 
 ## 🚀 Key Features
 * **Cultural Empathy:** Communicates using local nuances (English, Pidgin, Yoruba, Igbo, Hausa) with warm, localized greetings like *Pele*, *Ndo*, and *Sannu*.
